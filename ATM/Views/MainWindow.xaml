@@ -1,0 +1,56 @@
+﻿<Window x:Class="ATM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ATM"
+        mc:Ignorable="d"
+        Title="ATM" Height="550" Width="630" ResizeMode="NoResize" Background="DarkRed">
+    <Grid>
+        <Canvas>
+            <Label  Content="ATM BANK" FontSize="50" Width="630" Foreground="White" Background="DarkRed" HorizontalContentAlignment="Center"></Label>
+
+            <Button Command="{Binding InsertCardCommand}" Width="580" Height="70" Content="Insert Card" FontSize="40" Canvas.Top="80" Background="Silver" Foreground="White" Canvas.Left="25">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="22"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <TextBox IsEnabled="{Binding InsertCardButtonClickedIsEnable}" Text="{Binding InsertCardPassword}" Width="580" Height="70" FontSize="40" Canvas.Top="160" Background="DeepSkyBlue" Foreground="White" Canvas.Left="25">
+                <TextBox.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="22"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <Button Command="{Binding LoadDataButtonCommand}" IsEnabled="{Binding InsertCardButtonClickedIsEnable}" Background="Aqua" Width="200" Height="100" Canvas.Top="250" Canvas.Left="25" Content="Load Data" FontSize="35">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <TextBlock IsEnabled="{Binding InsertCardButtonClickedIsEnable}" Width="350" Background="WhiteSmoke" FontFamily="Comic Sans MS" Text="{Binding CardHolder}" FontSize="30" Canvas.Left="250" Canvas.Top="250" Height="40"></TextBlock>
+
+            <TextBlock IsEnabled="{Binding InsertCardButtonClickedIsEnable}" Width="350" Background="WhiteSmoke" FontFamily="Comic Sans MS" Text="{Binding TheAmountOnTheCard,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" FontSize="30" Canvas.Left="250" Canvas.Top="300" Height="40"></TextBlock>
+
+            <TextBox IsEnabled="{Binding LoadDataButtonClickedIsEnable}" Text="{Binding  AmountYouWantToithdrawFromTheCard,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Canvas.Bottom="30" FontSize="70" Width="150" BorderBrush="Black" BorderThickness="3" Canvas.Left="25" Height="100"></TextBox>
+
+            <Button IsEnabled="{Binding LoadDataButtonClickedIsEnable}" Command="{Binding TransferMoneyButtonCommand}" Width="200" Height="100" Canvas.Bottom="30" Background="DeepSkyBlue" Canvas.Left="210" Content="Transfer Money" FontSize="25">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Label IsEnabled="{Binding LoadDataButtonClickedIsEnable}" Content="{Binding OutgoingMoney,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Canvas.Bottom="30" FontSize="70" Width="150" BorderBrush="Black" BorderThickness="3"  Canvas.Left="450" Height="100"></Label>
+
+
+
+        </Canvas>
+    </Grid>
+</Window>
